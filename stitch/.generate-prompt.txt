@@ -1,0 +1,396 @@
+# Ürün Gereksinimleri Dokümanı — Sayac Test Uygulaması
+
+## 1. Genel Bakış
+
+Sayac Test Uygulaması, kullanıcıların artırma, azaltma ve sıfırlama işlemleriyle sayac değerini yönetmelerini sağlayan minimal ama işlevsel bir web uygulamasıdır. Uygulama, yapılan her değişikliğin zaman damgalı geçmişini saklar ve son 10 işlemi listede gösterir. Koyu/açık tema desteği ile kullanıcı tercihlerine saygı duyar. Türkçe arayüz ile yerel kullanıcılara亲切 bir deneyim sunar.
+
+Hedef kitle: Demo/test senaryolarında sayaç işlevselliği denemek isteyen geliştiriciler ve son kullanıcılar. Hafif, hızlı ve tarayıcıda çalışan bir araç olması hedeflenir.
+
+---
+
+## 2. Hedefler
+
+1. Kullanıcılar sayaç değerini kolayca artırabilmeli, azaltabilmeli ve sıfırlayabilmelidir.
+2. Yapılan her değişiklik (artırma, azaltma, sıfırlama) zaman damgası ile birlikte geçmişe kaydedilmelidir.
+3. Son 10 değişiklik liste halinde görüntülenmelidir; daha eski kayıtlar otomatik olarak budanmalıdır.
+4. Koyu ve açık tema desteği sunulmalı, tercih tarayıcıda localStorage ile saklanmalıdır.
+5. Uygulama tek sayfa olarak çalışmalı, ek bir sunucu gerektirmemelidir.
+6. Mobil ve masaüstü tarayıcılarda tutarlı ve erişilebilir bir deneyim sağlanmalıdır.
+7. Tüm arayüz metinleri Türkçe olmalıdır.
+
+---
+
+## 3. Tech Stack Detayı
+
+- **Framework:** React 18.3 (Vite ile)
+- **Build Tool:** Vite 5.x — hızlı geliştirme sunucusu ve optimize üretim build'i
+- **Styling:** Tailwind CSS 3.x — utility-first CSS yaklaşımı, responsive tasarım
+- **State Yönetimi:** React useState + useReducer — hafif, harici bağımlılık gerektirmez
+- **Kalıcılık:** localStorage — tarayıcıda veri saklama, sunucuya gerek yok
+- **Routing:** Yok — tek sayfa uygulaması (SPA), routing gerektirmez
+- **Tip Güvenliği:** TypeScript 5.x — statik tip kontrolü ile geliştirme deneyimi
+- **İkon Kütüphanesi:** Lucide React — minimalist, erişilebilir SVG ikonlar (emoji yerine)
+
+---
+
+## 4. Fonksiyonel Gereksinimler
+
+### 4.1 Sayaç Değeri Gösterimi
+
+- Ekranın merkezinde büyük ve okunaklı bir sayı görüntülenir.
+- Sayaç değeri varsayılan olarak 0'dan başlar.
+- Değer değiştiğinde animasyonlu geçiş sağlanır (sayı değişimi görsel olarak vurgulanır).
+- Negatif sayılar da desteklenir.
+- Max gösterim: +/-999.999.999 aralığı. Bu aralık dışında "Taşma" uyarısı gösterilir.
+
+### 4.2 Artırma Butonu
+
+- Etiket: "Artır"
+- Her tıklamada sayaç değeri +1 artar.
+- Kısayol klavye: "+" tuşu veya "ArrowUp"
+- Buton devre dışı durumu: sayac max değere ulaştığında
+- Başarı durumu: sayaç değeri güncellenir, geçmişe "+1" kaydı eklenir, animasyon tetiklenir
+
+### 4.3 Azaltma Butonu
+
+- Etiket: "Azalt"
+- Her tıklamada sayaç değeri -1 azalır.
+- Kısayol klavye: "-" tuşu veya "ArrowDown"
+- Buton devre dışı durumu: sayaç min değere ulaştığında (-999.999.999)
+- Başarı durumu: sayaç değeri güncellenir, geçmişe "-1" kaydı eklenir, animasyon tetiklenir
+
+### 4.4 Sıfırla Butonu
+
+- Etiket: "Sıfırla"
+- Sayaç değerini 0'a geri getirir.
+- Kısayol klavye: "R" tuşu
+- Onay gerektirir: "Sıfırlamak istediğinize emin misiniz?" modal penceresi
+- Başarı durumu: sayaç sıfırlanır, geçmişe "Sıfırla" kaydı eklenir
+
+### 4.5 Değişiklik Geçmişi
+
+- Her değişiklik şu bilgileri içerir: işlem türü (+1, -1, Sıfırla), sayaç değeri, zaman damgası
+- Zaman damgası formatı: "22.04.2026 09:35:20" (DD.MM.YYYY SS:dd:ss)
+- En yeni kayıt en üstte görüntülenir.
+- Maksimum 10 kayıt tutulur; 11. kayıt eklendiğinde en eski kayıt silinir (FIFO).
+- Geçmiş liste boşsa: "Henüz değişiklik yapılmadı." mesajı gösterilir.
+
+### 4.6 Koyu/Açık Tema
+
+- Tema değiştirici toggle butonu sağ üst köşede bulunur.
+- Açık tema: açık gri arka plan (#F9FAFB), koyu metin
+- Koyu tema: koyu gri arka plan (#111827), açık metin
+- Tercih tarayıcı localStorage'da saklanır. Sayfa yeniden yüklendiğinde son tercih korunur.
+- Sistem tercihi desteği: kullanıcı daha önce tercih belirtmediyse, işletim sistemi teması algılanır (prefers-color-scheme)
+- Toggle ikonu: güneş (açık) / ay (koyu) — Lucide icons
+
+### 4.7 Hata Mesajları (Tümü Türkçe)
+
+- "Lütfen geçerli bir sayı girin": sayısal olmayan giriş yapıldığında
+- "Sayaç maksimum değere ulaştı (+999.999.999)": üst sınır aşılmaya çalışıldığında
+- "Sayaç minimum değere ulaştı (-999.999.999)": alt sınır aşılmaya çalışıldığında
+- "Değişiklik geçmişi silinemez": geçmiş silme işlemi desteklenmediğinde (opsiyonel özellik)
+
+### 4.8 Klavye Kısayolları
+
+| Tuş | Eylem |
+|-----|-------|
+| + veya Yukarı Ok | Artır |
+| - veya Aşağı Ok | Azalt |
+| R | Sıfırla (onay gerektirir) |
+| D | Tema değiştir |
+
+---
+
+## 5. Veri Modeli
+
+### 5.1 CounterState
+
+```typescript
+interface CounterState {
+  value: number;        // Mevcut sayaç değeri (-999999999 ile +999999999)
+  theme: 'light' | 'dark' | 'system';  // Tema tercihi
+}
+```
+
+### 5.2 HistoryEntry
+
+```typescript
+interface HistoryEntry {
+  id: string;           // Benzersiz ID (crypto.randomUUID() veya timestamp+random)
+  action: 'increment' | 'decrement' | 'reset';
+  value: number;       // İşlem sonrası sayaç değeri
+  timestamp: string;   // ISO 8601 formatında zaman damgası: "2026-04-22T09:35:20.000Z"
+  displayTime: string;  // Türkçe formatlı zaman: "22.04.2026 09:35:20"
+}
+```
+
+### 5.3 LocalStorage Yapısı
+
+- Key: `sayac-test-state` → JSON string olarak saklanır
+- Değer: `CounterState` JSON serialization
+- Key: `sayac-test-history` → JSON array olarak saklanır
+- Değer: `HistoryEntry[]` — en fazla 10 eleman
+
+### 5.4 Başlangıç Durumu
+
+```json
+{
+  "value": 0,
+  "theme": "system"
+}
+```
+
+---
+
+## 6. UI/UX Gereksinimleri
+
+### 6.1 Design System Seçimi
+
+- **Aesthetic:** Minimal — temiz çizgiler, bol beyaz alan, odak noktası sayaç değeri
+- **Genel karakter:** Sakin, konsantrasyonu destekleyen, görev odaklı
+
+#### Renk Paleti
+
+| Renk | Hex (Açık) | Hex (Koyu) | Kullanım |
+|------|------------|------------|----------|
+| Primary | #3B82F6 | #60A5FA | Butonlar, vurgular |
+| Secondary | #6B7280 | #9CA3AF | İkincil metin, kenarlıklar |
+| Background | #F9FAFB | #111827 | Sayfa arka planı |
+| Surface | #FFFFFF | #1F2937 | Kartlar, paneller |
+| Text Primary | #111827 | #F9FAFB | Ana metin |
+| Text Secondary | #6B7280 | #9CA3AF | Yardımcı metin |
+| Border | #E5E7EB | #374151 | Kenarlıklar |
+| Success | #10B981 | #34D399 | Başarı durumu (yeşil) |
+| Error | #EF4444 | #F87171 | Hata durumu (kırmızı) |
+| Warning | #F59E0B | #FBBF24 | Uyarı durumu (turuncu) |
+
+#### Tipografi
+
+| Kullanım | Font | Yedek |
+|----------|------|-------|
+| Heading (Sayaç değeri) | Inter | system-ui, sans-serif |
+| Body (Butonlar, metin) | Inter | system-ui, sans-serif |
+| Monospace (Zaman damgası) | JetBrains Mono | monospace |
+
+**Font Boyutları (Tailwind default scale):**
+- Sayaç değeri: `text-7xl` (6rem / 96px)
+- Buton metni: `text-lg` (1.125rem / 18px)
+- Geçmiş liste: `text-sm` (0.875rem / 14px)
+
+#### İkon Kütüphanesi
+
+- **Lucide React** — açık kaynak, tutarlı SVG ikon seti
+- Kullanılacak ikonlar:
+  - `Plus` — artırma
+  - `Minus` — azaltma
+  - `RotateCcw` — sıfırlama
+  - `Sun` — açık tema
+  - `Moon` — koyu tema
+  - `History` — geçmiş simgesi
+
+### 6.2 Spacing & Components
+
+#### Spacing Scale
+
+| Token | Değer | Kullanım |
+|-------|-------|----------|
+| xs | 4px | İkon iç boşlukları |
+| sm | 8px | Etiket aralığı |
+| md | 16px | Kart iç padding |
+| lg | 24px | Bölümler arası boşluk |
+| xl | 32px | Sayfa kenar boşlukları |
+| 2xl | 48px | Ana içerik üst/alt boşluk |
+
+#### Border Radius
+
+| Kullanım | Değer |
+|----------|-------|
+| Butonlar | `rounded-lg` (8px) |
+| Kart/Panel | `rounded-xl` (12px) |
+| Toggle | `rounded-full` (tam yuvarlak) |
+
+#### Shadow Tanımları
+
+| Kullanım | Tailwind Class |
+|----------|----------------|
+| Kart | `shadow-sm` |
+| Buton hover | `shadow-md` |
+| Modal overlay | `shadow-2xl` |
+
+#### Bileşen Desenleri
+
+**Buton:**
+- Varsayılan: `bg-blue-500 text-white px-6 py-3 rounded-lg`
+- Hover: `bg-blue-600 shadow-md`
+- Active: `bg-blue-700 scale-95`
+- Disabled: `bg-gray-300 text-gray-500 cursor-not-allowed`
+
+**Sayaç Değeri:**
+- Container: `bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-12`
+- Sayı: `font-bold text-7xl tracking-tight`
+- Animasyon: `transition-transform duration-150` ile scale efekti
+
+**Geçmiş Kart:**
+- Container: `bg-gray-50 dark:bg-gray-800 rounded-xl p-4`
+- Liste elemanı: `flex justify-between items-center border-b border-gray-200 dark:border-gray-700 last:border-0`
+
+---
+
+## 7. Non-Functional Requirements
+
+### 7.1 Performans
+
+- İlk yükleme (Lighthouse): < 1.5 saniye
+- Sayfa geçişi: Uygulama tek sayfa, geçiş yok
+- Bundle size hedefi: < 100KB gzipped (React + Vite + Tailwind)
+- Sayaç güncelleme: < 16ms (60fps animasyon)
+
+### 7.2 Erişilebilirlik (WCAG 2.1 AA)
+
+- Tüm butonlar `aria-label` ile etiketlenmiş (örn: "Sayaç değerini bir artır")
+- Klavye navigasyonu: Tab ile tüm butonlara erişilebilir, Enter/Space ile tetiklenebilir
+- Ekran okuyucu uyumlu: ARIA live region ile sayaç değeri değişikliği duyurulur
+- Kontrast oranı: metin ≥ 4.5:1, büyük metin ≥ 3:1
+- Focus state: tüm interactive elementlerde `focus:ring-2 focus:ring-blue-500 focus:outline-none`
+- Touch hedefleri: ≥ 44x44px (butonlar minimum bu boyutta)
+
+### 7.3 Tarayıcı Desteği
+
+- Chrome 90+
+- Firefox 88+
+- Safari 14+
+- Edge 90+
+- iOS Safari 14+
+- Android Chrome 90+
+
+### 7.4 Responsive Tasarım
+
+| Breakpoint | Düzen |
+|-------------|-------|
+| Mobile (< 640px) | Tek sütun, sayaç üstte, butonlar altında |
+| Tablet (640px - 1024px) | Yatay buton düzeni, geçmiş yan panel |
+| Desktop (> 1024px) | Merkezi içerik, max-width: 640px |
+
+---
+
+## 8. Proje Yapısı
+
+```
+sayac-test-6940996/
+├── index.html
+├── package.json
+├── vite.config.ts
+├── tsconfig.json
+├── tailwind.config.js
+├── postcss.config.js
+├── src/
+│   ├── main.tsx           # Uygulama giriş noktası
+│   ├── App.tsx            # Ana bileşen
+│   ├── index.css          # Tailwind directives + custom CSS
+│   ├── types/
+│   │   └── index.ts       # TypeScript arayüzleri
+│   ├── hooks/
+│   │   ├── useCounter.ts  # Sayaç state ve eylemleri
+│   │   ├── useHistory.ts  # Geçmiş yönetimi
+│   │   └── useTheme.ts    # Tema yönetimi
+│   ├── components/
+│   │   ├── Counter.tsx    # Sayaç değeri gösterimi
+│   │   ├── Buttons.tsx    # Artır/Azalt/Sıfırla butonları
+│   │   ├── History.tsx    # Geçmiş liste
+│   │   ├── ThemeToggle.tsx # Koyu/açık tema toggle
+│   │   └── ConfirmModal.tsx # Sıfırla onay modalı
+│   └── utils/
+│       ├── storage.ts     # localStorage yardımcıları
+│       └── time.ts        # Zaman formatı yardımcıları
+└── public/
+    └── (boş — statik asset yok)
+```
+
+---
+
+## 9. Window State (Testing / Dogfood)
+
+```typescript
+window.app = {
+  state: 'idle', // 'idle' | 'incrementing' | 'decrementing' | 'resetting' | 'error'
+  counter: {
+    value: number;
+    min: -999999999;
+    max: 999999999;
+  };
+  history: Array<{
+    action: 'increment' | 'decrement' | 'reset';
+    value: number;
+    timestamp: string;
+  }>;
+  theme: 'light' | 'dark' | 'system';
+  // Debug amaçlı: window.app.setCounter(42) gibi test fonksiyonları
+}
+```
+
+---
+
+## 10. Ekranlar (Zorunlu Tablo)
+
+| # | Ekran Adı | Tür | Açıklama |
+|---|-----------|-----|----------|
+| 1 | Ana Sayfa | main | Sayaç değeri, butonlar, geçmiş listesi, tema toggle — hepsi tek sayfada |
+| 2 | Sıfırla Onay Modalı | modal | "Sıfırlamak istediğinize emin misiniz?" mesajı, İptal/Onayla butonları |
+| 3 | Taşma Uyarı Toast | toast/notification | Sayaç max/min değere ulaştığında gösterilen kısa uyarı mesajı |
+| 4 | Boş Geçmiş Durumu | empty-state | "Henüz değişiklik yapılmadı." mesajı, tarih simgesi ile birlikte |
+| 5 | Klavye Kısayolları Paneli | overlay | "?D" tuşuna basıldığında açılan kısayol listesi paneli |
+
+---
+
+## 11. Kullanıcı Akışı
+
+```
+[Uygulama Açılır]
+       │
+       ▼
+[Başlangıç: Sayaç=0, Geçmiş boş, Tema=sistem tercihi]
+       │
+       ▼
+[Kullanıcı "Artır" butonuna tıklar]
+       │
+       ▼
+[Sayaç +1, Geçmişe "+1 | 1 | 22.04.2026 09:35:20" eklenir]
+       │
+       ▼
+[UI güncellenir: animasyonlu sayı değişimi]
+       │
+       ▼
+[Kullanıcı tema toggle'a tıklar]
+       │
+       ▼
+[Tema değişir, localStorage'a kaydedilir]
+       │
+       ▼
+[Sayfa yeniden yüklendiğinde tema tercihi korunur]
+```
+
+---
+
+## 12. Edge Case'ler
+
+1. **localStorage dolu:** Storage quota exceeded durumunda hata toast gösterilir, geçmiş güncellenemez ama sayaç çalışmaya devam eder.
+2. **Sayaç sınırı:** Max değere ulaşınca artır butonu devre dışı + toast uyarısı. Min değere ulaşınca azalt butonu devre dışı + toast uyarısı.
+3. **Çok hızlı tıklama:** Debounce ile 100ms içinde ardışık tıklamalar tek işlem olarak sayılabilir (veya her tıklama ayrı işlenir — net bir davranış belirtilmeli; bu dokümanda: her tıklama ayrı işlenir).
+4. **Geçmiş silme:** Kullanıcı geçmişi manuel olarak silemez. Sadece 10 kayıt FIFO ile otomatik budanır.
+5. **Tema çakışması:** Sistem teması değiştiğinde kullanıcı "system" seçili ise otomatik güncellenir.
+
+---
+
+*Bu PRD, uygulamanın eksiksiz bir şekilde geliştirilmesi için gereken tüm bilgileri içerir. Geliştirici, bu doküman referans alınarak implementation adımlarına geçebilir.*
+
+Generate a SEPARATE screen design for EVERY page, view, modal, dialog, tab panel, and settings screen described in this PRD. Do NOT skip ANY screen — even if it seems minor.
+
+MANDATORY SCREENS:
+- If the PRD mentions "settings" or "ayarlar" → generate a Settings screen
+- If the PRD mentions tabs or bottom navigation → generate EACH tab view as a separate screen
+- If the PRD mentions modals (statistics, help, share, confirmation) → generate each as a separate screen
+- If the PRD mentions error states, empty states, loading states → generate those too
+- Generate at least as many screens as there are distinct views/pages/modals in the PRD
+
+All visible text must be in Turkish. Use a dark, modern theme.

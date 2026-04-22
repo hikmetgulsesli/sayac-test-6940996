@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SAYAÇ - Precision Tech</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-variant": "#2e3545",
+                      "surface-container-lowest": "#070e1d",
+                      "surface-container-high": "#232a3a",
+                      "on-tertiary": "#502400",
+                      "primary": "#adc6ff",
+                      "on-surface": "#dce2f7",
+                      "inverse-on-surface": "#293040",
+                      "tertiary-fixed": "#ffdcc6",
+                      "on-secondary-fixed-variant": "#304671",
+                      "outline": "#8c909f",
+                      "error": "#ffb4ab",
+                      "inverse-surface": "#dce2f7",
+                      "surface-dim": "#0c1322",
+                      "on-primary": "#002e6a",
+                      "inverse-primary": "#005ac2",
+                      "error-container": "#93000a",
+                      "tertiary": "#ffb786",
+                      "secondary-container": "#304671",
+                      "tertiary-fixed-dim": "#ffb786",
+                      "on-primary-fixed": "#001a42",
+                      "on-tertiary-fixed": "#311400",
+                      "on-surface-variant": "#c2c6d6",
+                      "surface-container": "#191f2f",
+                      "surface-container-highest": "#2e3545",
+                      "secondary-fixed-dim": "#b1c6f9",
+                      "secondary": "#b1c6f9",
+                      "primary-fixed-dim": "#adc6ff",
+                      "tertiary-container": "#df7412",
+                      "on-primary-fixed-variant": "#004395",
+                      "on-background": "#dce2f7",
+                      "on-secondary-container": "#9fb5e7",
+                      "on-tertiary-fixed-variant": "#723600",
+                      "on-secondary": "#182f59",
+                      "surface": "#0c1322",
+                      "surface-bright": "#323949",
+                      "on-error": "#690005",
+                      "background": "#0c1322",
+                      "primary-fixed": "#d8e2ff",
+                      "on-secondary-fixed": "#001a42",
+                      "surface-container-low": "#141b2b",
+                      "primary-container": "#4d8eff",
+                      "secondary-fixed": "#d8e2ff",
+                      "outline-variant": "#424754",
+                      "on-primary-container": "#00285d",
+                      "surface-tint": "#adc6ff",
+                      "on-tertiary-container": "#461f00",
+                      "on-error-container": "#ffdad6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {},
+              "fontFamily": {
+                      "headline": [
+                              "Inter"
+                      ],
+                      "display": [
+                              "Inter"
+                      ],
+                      "body": [
+                              "Inter"
+                      ],
+                      "label": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {}
+      },
+          },
+        }
+    </script>
+<style>
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body h-screen flex overflow-hidden">
+<!-- SideNavBar (Web) -->
+<nav class="hidden md:flex bg-[#141b2b] dark:bg-[#141b2b] h-full w-64 fixed left-0 border-r-0 flat no-shadows flex-col h-full py-8 tonal shift using surface_container_low z-20">
+<div class="px-6 mb-12">
+<h1 class="text-lg font-black text-[#adc6ff] tracking-tight">PRECISION TECH</h1>
+<p class="font-['Inter'] text-sm tracking-wide text-[#adc6ff] opacity-70 mt-1">V1.0.4-KINETIC</p>
+</div>
+<div class="flex-1 overflow-y-auto w-full">
+<ul class="space-y-2">
+<li>
+<a class="flex items-center px-6 py-3 bg-[#232a3a] text-[#adc6ff] rounded-r-full mr-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="dashboard">dashboard</span>
+<span class="font-medium text-sm">Panel</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-6 py-3 text-[#c2c6d6] hover:text-white hover:bg-[#191f2f] rounded-r-full mr-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="history">history</span>
+<span class="font-medium text-sm">Geçmiş</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-6 py-3 text-[#c2c6d6] hover:text-white hover:bg-[#191f2f] rounded-r-full mr-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="query_stats">query_stats</span>
+<span class="font-medium text-sm">Analiz</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-6 py-3 text-[#c2c6d6] hover:text-white hover:bg-[#191f2f] rounded-r-full mr-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="settings">settings</span>
+<span class="font-medium text-sm">Ayarlar</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col md:ml-64 relative min-h-screen">
+<!-- TopAppBar (Mobile & Web) -->
+<header class="bg-[#0c1322] dark:bg-[#0c1322] docked full-width top-0 flat no-shadows bg-[#141b2b] flex justify-between items-center w-full px-6 py-4 z-10 sticky md:static">
+<div class="flex items-center">
+<button class="md:hidden mr-4 text-[#adc6ff]">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<div class="text-xl font-bold tracking-tighter text-[#adc6ff]">SAYAÇ</div>
+</div>
+<div class="flex items-center space-x-2 text-[#adc6ff] dark:text-[#adc6ff]">
+<button class="p-2 rounded-full hover:bg-[#191f2f] transition-all duration-300 active:scale-95 text-[#adc6ff] font-semibold">
+<span class="material-symbols-outlined" data-icon="settings_input_antenna">settings_input_antenna</span>
+</button>
+<button class="p-2 rounded-full hover:bg-[#191f2f] transition-all duration-300 active:scale-95 text-[#c2c6d6]">
+<span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+</button>
+<button class="p-2 rounded-full hover:bg-[#191f2f] transition-all duration-300 active:scale-95 text-[#c2c6d6]">
+<span class="material-symbols-outlined" data-icon="keyboard_command_key">keyboard_command_key</span>
+</button>
+</div>
+</header>
+<!-- Canvas -->
+<div class="flex-1 flex flex-col lg:flex-row p-6 md:p-8 lg:p-12 gap-8 overflow-y-auto">
+<!-- Center Display Area (Panel) -->
+<div class="flex-1 flex flex-col items-center justify-center min-h-[614px] lg:min-h-0 relative">
+<!-- Ambient Glow Behind Counter -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-64 h-64 bg-primary/10 rounded-full blur-[40px]"></div>
+</div>
+<!-- Main Counter Display -->
+<div class="relative z-10 text-center mb-16">
+<div class="text-[3.5rem] md:text-[5rem] lg:text-[7rem] font-bold font-mono tracking-tighter leading-none text-on-surface">
+                        1.248
+                    </div>
+</div>
+<!-- Action Controls -->
+<div class="flex flex-col sm:flex-row items-center justify-center gap-6 relative z-10">
+<!-- Decrement Button -->
+<button class="flex items-center justify-center px-8 py-4 bg-surface-container-highest rounded-xl text-on-surface hover:bg-surface-bright transition-colors duration-300 active:scale-95 ease-[cubic-bezier(0.4,0,0.2,1)] group">
+<span class="material-symbols-outlined mr-3 text-[1.5rem]" data-icon="remove">remove</span>
+<span class="font-medium text-[0.75rem] tracking-[0.05em] uppercase">Azalt</span>
+</button>
+<!-- Increment Button (Primary CTA) -->
+<button class="flex items-center justify-center px-10 py-5 rounded-xl text-surface-container-lowest transition-all duration-300 active:scale-95 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-[0_0_20px_rgba(173,198,255,0.2)] hover:shadow-[0_0_30px_rgba(173,198,255,0.4)]" style="background: linear-gradient(135deg, theme('colors.primary'), theme('colors.primary-container'));">
+<span class="material-symbols-outlined mr-3 text-[1.5rem]" data-icon="add">add</span>
+<span class="font-bold text-[0.875rem] tracking-[0.05em] uppercase">Artır</span>
+</button>
+<!-- Reset Button -->
+<button class="flex items-center justify-center px-8 py-4 rounded-xl text-outline border border-outline/15 hover:bg-surface-container hover:text-on-surface-variant transition-all duration-300 active:scale-95 ease-[cubic-bezier(0.4,0,0.2,1)] bg-transparent">
+<span class="material-symbols-outlined mr-3 text-[1.5rem]" data-icon="refresh">refresh</span>
+<span class="font-medium text-[0.75rem] tracking-[0.05em] uppercase">Sıfırla</span>
+</button>
+</div>
+</div>
+<!-- History Sidebar (Asymmetric Balance) -->
+<aside class="w-full lg:w-[400px] flex flex-col pt-8 lg:pt-0">
+<div class="mb-6 flex justify-between items-end px-2">
+<h2 class="text-[1.5rem] font-semibold font-headline text-on-surface">Geçmiş Kayıtlar</h2>
+<span class="text-[0.75rem] font-medium text-on-surface-variant uppercase tracking-[0.05em]">Son 5</span>
+</div>
+<div class="flex flex-col space-y-4">
+<!-- History Item 1 (Most Recent - Higher Elevation) -->
+<div class="bg-surface-container-highest p-5 rounded-lg flex items-center justify-between group transition-colors duration-300">
+<div class="flex flex-col gap-1">
+<span class="font-mono text-[0.75rem] text-on-surface-variant">22.04.2026 09:35:20</span>
+<span class="font-mono text-lg font-bold text-on-surface group-hover:text-primary transition-colors">1.248</span>
+</div>
+<div class="flex items-center">
+<span class="font-mono text-primary font-bold bg-primary/10 px-3 py-1 rounded text-sm">+1</span>
+</div>
+</div>
+<!-- History Item 2 -->
+<div class="bg-surface-container p-5 rounded-lg flex items-center justify-between hover:bg-surface-container-highest transition-colors duration-300 group">
+<div class="flex flex-col gap-1">
+<span class="font-mono text-[0.75rem] text-on-surface-variant">22.04.2026 09:34:15</span>
+<span class="font-mono text-lg font-bold text-on-surface group-hover:text-primary transition-colors">1.247</span>
+</div>
+<div class="flex items-center">
+<span class="font-mono text-primary font-bold bg-primary/10 px-3 py-1 rounded text-sm">+1</span>
+</div>
+</div>
+<!-- History Item 3 -->
+<div class="bg-surface-container-low p-5 rounded-lg flex items-center justify-between hover:bg-surface-container-highest transition-colors duration-300 group">
+<div class="flex flex-col gap-1">
+<span class="font-mono text-[0.75rem] text-on-surface-variant">22.04.2026 09:32:02</span>
+<span class="font-mono text-lg font-bold text-on-surface group-hover:text-primary transition-colors">1.246</span>
+</div>
+<div class="flex items-center">
+<span class="font-mono text-error font-bold bg-error/10 px-3 py-1 rounded text-sm">-1</span>
+</div>
+</div>
+<!-- History Item 4 -->
+<div class="bg-surface-container-low p-5 rounded-lg flex items-center justify-between hover:bg-surface-container-highest transition-colors duration-300 group">
+<div class="flex flex-col gap-1">
+<span class="font-mono text-[0.75rem] text-on-surface-variant/70">22.04.2026 09:28:44</span>
+<span class="font-mono text-lg font-bold text-on-surface/80 group-hover:text-primary transition-colors">1.247</span>
+</div>
+<div class="flex items-center">
+<span class="font-mono text-primary font-bold bg-primary/10 px-3 py-1 rounded text-sm">+1</span>
+</div>
+</div>
+<!-- History Item 5 (Oldest - Lowest Elevation visually) -->
+<div class="bg-surface-container-low p-5 rounded-lg flex items-center justify-between hover:bg-surface-container-highest transition-colors duration-300 group opacity-80">
+<div class="flex flex-col gap-1">
+<span class="font-mono text-[0.75rem] text-on-surface-variant/50">22.04.2026 09:15:10</span>
+<span class="font-mono text-lg font-bold text-on-surface/60 group-hover:text-primary transition-colors">1.246</span>
+</div>
+<div class="flex items-center">
+<span class="font-mono text-primary font-bold bg-primary/10 px-3 py-1 rounded text-sm">+1</span>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+</body></html>

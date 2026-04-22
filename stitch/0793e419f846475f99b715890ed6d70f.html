@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Klavye Kısayolları</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-variant": "#2e3545",
+                        "surface-container-lowest": "#070e1d",
+                        "surface-container-high": "#232a3a",
+                        "on-tertiary": "#502400",
+                        "primary": "#adc6ff",
+                        "on-surface": "#dce2f7",
+                        "inverse-on-surface": "#293040",
+                        "tertiary-fixed": "#ffdcc6",
+                        "on-secondary-fixed-variant": "#304671",
+                        "outline": "#8c909f",
+                        "error": "#ffb4ab",
+                        "inverse-surface": "#dce2f7",
+                        "surface-dim": "#0c1322",
+                        "on-primary": "#002e6a",
+                        "inverse-primary": "#005ac2",
+                        "error-container": "#93000a",
+                        "tertiary": "#ffb786",
+                        "secondary-container": "#304671",
+                        "tertiary-fixed-dim": "#ffb786",
+                        "on-primary-fixed": "#001a42",
+                        "on-tertiary-fixed": "#311400",
+                        "on-surface-variant": "#c2c6d6",
+                        "surface-container": "#191f2f",
+                        "surface-container-highest": "#2e3545",
+                        "secondary-fixed-dim": "#b1c6f9",
+                        "secondary": "#b1c6f9",
+                        "primary-fixed-dim": "#adc6ff",
+                        "tertiary-container": "#df7412",
+                        "on-primary-fixed-variant": "#004395",
+                        "on-background": "#dce2f7",
+                        "on-secondary-container": "#9fb5e7",
+                        "on-tertiary-fixed-variant": "#723600",
+                        "on-secondary": "#182f59",
+                        "surface": "#0c1322",
+                        "surface-bright": "#323949",
+                        "on-error": "#690005",
+                        "background": "#0c1322",
+                        "primary-fixed": "#d8e2ff",
+                        "on-secondary-fixed": "#001a42",
+                        "surface-container-low": "#141b2b",
+                        "primary-container": "#4d8eff",
+                        "secondary-fixed": "#d8e2ff",
+                        "outline-variant": "#424754",
+                        "on-primary-container": "#00285d",
+                        "surface-tint": "#adc6ff",
+                        "on-tertiary-container": "#461f00",
+                        "on-error-container": "#ffdad6"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.125rem",
+                        lg: "0.25rem",
+                        xl: "0.5rem",
+                        full: "0.75rem"
+                    },
+                    fontFamily: {
+                        headline: ["Inter", "sans-serif"],
+                        display: ["Inter", "sans-serif"],
+                        body: ["Inter", "sans-serif"],
+                        label: ["Inter", "sans-serif"],
+                        mono: ["JetBrains Mono", "monospace"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex items-center justify-center font-body p-4 sm:p-8">
+<!-- Modal Overlay Backdrop -->
+<div class="fixed inset-0 bg-surface-dim/60 backdrop-blur-md flex items-center justify-center p-4 z-50">
+<!-- Modal Container -->
+<div class="bg-surface-container-highest/90 w-full max-w-md rounded-xl shadow-2xl relative overflow-hidden ring-1 ring-outline-variant/20 flex flex-col">
+<!-- Glassmorphism Highlight / Gradient Top -->
+<div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-primary-container"></div>
+<!-- Header -->
+<div class="p-6 pb-4 flex justify-between items-center bg-surface-container-highest/50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="keyboard">keyboard</span>
+<h2 class="text-xl font-headline font-semibold tracking-wide text-on-surface">Klavye Kısayolları</h2>
+</div>
+<button aria-label="Close" class="text-on-surface-variant hover:text-on-surface transition-colors rounded-full p-1 hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-xl" data-icon="close">close</span>
+</button>
+</div>
+<!-- Content List -->
+<div class="p-6 pt-2 space-y-3">
+<!-- Item 1: Artır -->
+<div class="flex items-center justify-between bg-surface-container-low p-4 rounded-lg group transition-colors duration-200">
+<span class="text-sm font-medium text-on-surface-variant group-hover:text-on-surface transition-colors">Artır</span>
+<div class="flex items-center gap-2">
+<kbd class="bg-surface-container-highest px-2 py-1.5 rounded-lg border border-outline-variant/30 text-xs font-mono text-primary flex items-center justify-center shadow-sm min-w-[28px]"><span class="material-symbols-outlined text-[1rem]" data-icon="add">add</span></kbd>
+<span class="text-xs text-on-surface-variant">veya</span>
+<kbd class="bg-surface-container-highest px-2 py-1.5 rounded-lg border border-outline-variant/30 text-xs font-mono text-primary flex items-center justify-center shadow-sm min-w-[28px]"><span class="material-symbols-outlined text-[1rem]" data-icon="arrow_upward">arrow_upward</span></kbd>
+</div>
+</div>
+<!-- Item 2: Azalt -->
+<div class="flex items-center justify-between bg-surface-container-low p-4 rounded-lg group transition-colors duration-200">
+<span class="text-sm font-medium text-on-surface-variant group-hover:text-on-surface transition-colors">Azalt</span>
+<div class="flex items-center gap-2">
+<kbd class="bg-surface-container-highest px-2 py-1.5 rounded-lg border border-outline-variant/30 text-xs font-mono text-primary flex items-center justify-center shadow-sm min-w-[28px]"><span class="material-symbols-outlined text-[1rem]" data-icon="remove">remove</span></kbd>
+<span class="text-xs text-on-surface-variant">veya</span>
+<kbd class="bg-surface-container-highest px-2 py-1.5 rounded-lg border border-outline-variant/30 text-xs font-mono text-primary flex items-center justify-center shadow-sm min-w-[28px]"><span class="material-symbols-outlined text-[1rem]" data-icon="arrow_downward">arrow_downward</span></kbd>
+</div>
+</div>
+<!-- Item 3: Sıfırla -->
+<div class="flex items-center justify-between bg-surface-container-low p-4 rounded-lg group transition-colors duration-200">
+<span class="text-sm font-medium text-on-surface-variant group-hover:text-on-surface transition-colors">Sıfırla</span>
+<kbd class="bg-surface-container-highest px-3 py-1.5 rounded-lg border border-outline-variant/30 text-sm font-mono text-primary flex items-center justify-center shadow-sm">R</kbd>
+</div>
+<!-- Item 4: Tema Değiştir -->
+<div class="flex items-center justify-between bg-surface-container-low p-4 rounded-lg group transition-colors duration-200">
+<span class="text-sm font-medium text-on-surface-variant group-hover:text-on-surface transition-colors">Tema Değiştir</span>
+<kbd class="bg-surface-container-highest px-3 py-1.5 rounded-lg border border-outline-variant/30 text-sm font-mono text-primary flex items-center justify-center shadow-sm">D</kbd>
+</div>
+</div>
+<!-- Footer action area -->
+<div class="p-6 pt-0 mt-2">
+<button class="w-full bg-surface-container hover:bg-surface-container-highest text-on-surface py-3 rounded-lg text-sm font-medium transition-colors duration-200 border border-outline-variant/10">
+                    Kapat
+                </button>
+</div>
+</div>
+</div>
+</body></html>

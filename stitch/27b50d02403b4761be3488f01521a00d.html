@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SAYAÇ - Boş Geçmiş Durumu</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .text-glow {
+            text-shadow: 0 0 40px rgba(173, 198, 255, 0.1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#2e3545",
+                        "surface-container-lowest": "#070e1d",
+                        "surface-container-high": "#232a3a",
+                        "on-tertiary": "#502400",
+                        "primary": "#adc6ff",
+                        "on-surface": "#dce2f7",
+                        "inverse-on-surface": "#293040",
+                        "tertiary-fixed": "#ffdcc6",
+                        "on-secondary-fixed-variant": "#304671",
+                        "outline": "#8c909f",
+                        "error": "#ffb4ab",
+                        "inverse-surface": "#dce2f7",
+                        "surface-dim": "#0c1322",
+                        "on-primary": "#002e6a",
+                        "inverse-primary": "#005ac2",
+                        "error-container": "#93000a",
+                        "tertiary": "#ffb786",
+                        "secondary-container": "#304671",
+                        "tertiary-fixed-dim": "#ffb786",
+                        "on-primary-fixed": "#001a42",
+                        "on-tertiary-fixed": "#311400",
+                        "on-surface-variant": "#c2c6d6",
+                        "surface-container": "#191f2f",
+                        "surface-container-highest": "#2e3545",
+                        "secondary-fixed-dim": "#b1c6f9",
+                        "secondary": "#b1c6f9",
+                        "primary-fixed-dim": "#adc6ff",
+                        "tertiary-container": "#df7412",
+                        "on-primary-fixed-variant": "#004395",
+                        "on-background": "#dce2f7",
+                        "on-secondary-container": "#9fb5e7",
+                        "on-tertiary-fixed-variant": "#723600",
+                        "on-secondary": "#182f59",
+                        "surface": "#0c1322",
+                        "surface-bright": "#323949",
+                        "on-error": "#690005",
+                        "background": "#0c1322",
+                        "primary-fixed": "#d8e2ff",
+                        "on-secondary-fixed": "#001a42",
+                        "surface-container-low": "#141b2b",
+                        "primary-container": "#4d8eff",
+                        "secondary-fixed": "#d8e2ff",
+                        "outline-variant": "#424754",
+                        "on-primary-container": "#00285d",
+                        "surface-tint": "#adc6ff",
+                        "on-tertiary-container": "#461f00",
+                        "on-error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter", "sans-serif"],
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body h-screen flex flex-col md:flex-row overflow-hidden">
+<!-- SideNavBar (Web Only) -->
+<nav class="hidden md:flex flex-col h-full py-8 bg-[#141b2b] dark:bg-[#141b2b] h-full w-64 fixed left-0 border-r-0 z-20">
+<div class="px-6 mb-8">
+<h1 class="text-lg font-black text-[#adc6ff] font-['Inter'] tracking-wide">PRECISION TECH</h1>
+<p class="text-xs text-on-surface-variant font-['Inter'] mt-1">V1.0.4-KINETIC</p>
+</div>
+<ul class="flex flex-col gap-2 flex-grow">
+<li>
+<a class="flex items-center gap-4 px-6 py-3 text-[#on_surface_variant] hover:text-white hover:bg-[#191f2f] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-['Inter'] text-sm tracking-wide">Panel</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-6 py-3 bg-[#232a3a] text-[#adc6ff] rounded-r-full mr-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="history" style="font-variation-settings: 'FILL' 1;">history</span>
+<span class="font-['Inter'] text-sm tracking-wide font-semibold">Geçmiş</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-6 py-3 text-[#on_surface_variant] hover:text-white hover:bg-[#191f2f] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="query_stats">query_stats</span>
+<span class="font-['Inter'] text-sm tracking-wide">Analiz</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-6 py-3 text-[#on_surface_variant] hover:text-white hover:bg-[#191f2f] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-['Inter'] text-sm tracking-wide">Ayarlar</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col md:ml-64 relative z-10 h-full">
+<!-- TopAppBar (Mobile & Web) -->
+<header class="flex justify-between items-center w-full px-6 py-4 bg-[#0c1322] dark:bg-[#0c1322] docked full-width top-0 z-30 md:hidden">
+<div class="text-xl font-bold tracking-tighter text-[#adc6ff] font-['Inter']">SAYAÇ</div>
+<div class="flex gap-4 text-[#adc6ff] dark:text-[#adc6ff]">
+<button class="hover:bg-[#191f2f] transition-all duration-300 p-2 rounded-full active:scale-95 transition-transform cubic-bezier(0.4,0,0.2,1)">
+<span class="material-symbols-outlined" data-icon="settings_input_antenna">settings_input_antenna</span>
+</button>
+<button class="hover:bg-[#191f2f] transition-all duration-300 p-2 rounded-full active:scale-95 transition-transform cubic-bezier(0.4,0,0.2,1)">
+<span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+</button>
+<button class="hover:bg-[#191f2f] transition-all duration-300 p-2 rounded-full active:scale-95 transition-transform cubic-bezier(0.4,0,0.2,1)">
+<span class="material-symbols-outlined" data-icon="keyboard_command_key">keyboard_command_key</span>
+</button>
+</div>
+</header>
+<!-- Canvas -->
+<main class="flex-1 flex flex-col lg:flex-row h-full overflow-hidden">
+<!-- Counter Section (Asymmetric Balance - Left) -->
+<section class="flex-1 flex flex-col items-center justify-center p-8 lg:p-16 relative">
+<div class="absolute inset-0 bg-primary opacity-5 blur-[120px] rounded-full pointer-events-none"></div>
+<div class="z-10 flex flex-col items-center gap-12">
+<!-- Counter Display -->
+<div class="font-mono font-bold text-[5rem] lg:text-[8rem] leading-none text-glow text-primary tracking-tighter">
+                        0000
+                    </div>
+<!-- Action Controls -->
+<div class="flex gap-6 items-center">
+<button class="flex items-center gap-2 px-6 py-3 bg-surface-container-highest hover:bg-surface-bright text-on-surface rounded-xl transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] active:scale-95">
+<span class="material-symbols-outlined text-[1.25rem]" data-icon="remove">remove</span>
+<span class="font-label text-[0.75rem] font-medium tracking-[0.05em] uppercase">Azalt</span>
+</button>
+<button class="flex items-center gap-2 px-8 py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary-container rounded-xl transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:shadow-[0_0_20px_rgba(173,198,255,0.3)] active:scale-95">
+<span class="material-symbols-outlined text-[1.5rem]" data-icon="add">add</span>
+<span class="font-label text-[0.875rem] font-bold tracking-[0.05em] uppercase">Arttır</span>
+</button>
+<button class="flex items-center gap-2 px-6 py-3 border border-outline/30 hover:border-outline/60 text-outline hover:text-on-surface rounded-xl transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] active:scale-95 bg-transparent">
+<span class="material-symbols-outlined text-[1.25rem]" data-icon="refresh">refresh</span>
+<span class="font-label text-[0.75rem] font-medium tracking-[0.05em] uppercase">Sıfırla</span>
+</button>
+</div>
+</div>
+</section>
+<!-- History Panel (Right Side - Empty State) -->
+<aside class="w-full lg:w-[400px] h-full bg-surface-container-low flex flex-col">
+<div class="px-8 py-6">
+<h2 class="font-headline text-[1.5rem] font-semibold text-on-surface tracking-tight">Geçmiş Kayıtlar</h2>
+</div>
+<div class="flex-1 flex flex-col items-center justify-center p-8 text-center gap-6">
+<div class="w-24 h-24 rounded-full bg-surface-container flex items-center justify-center text-outline-variant">
+<span class="material-symbols-outlined text-[3rem] opacity-50" data-icon="history_toggle_off">history_toggle_off</span>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="font-headline text-[1.125rem] font-medium text-on-surface">Henüz değişiklik yapılmadı.</h3>
+<p class="font-body text-[0.875rem] text-on-surface-variant max-w-[250px] mx-auto leading-relaxed">
+                            İşlem geçmişiniz burada görünecektir.
+                        </p>
+</div>
+</div>
+</aside>
+</main>
+</div>
+</body></html>

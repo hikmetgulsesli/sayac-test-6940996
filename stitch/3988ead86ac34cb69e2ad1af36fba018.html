@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sıfırla Onay Modalı</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-variant": "#2e3545",
+                        "surface-container-lowest": "#070e1d",
+                        "surface-container-high": "#232a3a",
+                        "on-tertiary": "#502400",
+                        "primary": "#adc6ff",
+                        "on-surface": "#dce2f7",
+                        "inverse-on-surface": "#293040",
+                        "tertiary-fixed": "#ffdcc6",
+                        "on-secondary-fixed-variant": "#304671",
+                        "outline": "#8c909f",
+                        "error": "#ffb4ab",
+                        "inverse-surface": "#dce2f7",
+                        "surface-dim": "#0c1322",
+                        "on-primary": "#002e6a",
+                        "inverse-primary": "#005ac2",
+                        "error-container": "#93000a",
+                        "tertiary": "#ffb786",
+                        "secondary-container": "#304671",
+                        "tertiary-fixed-dim": "#ffb786",
+                        "on-primary-fixed": "#001a42",
+                        "on-tertiary-fixed": "#311400",
+                        "on-surface-variant": "#c2c6d6",
+                        "surface-container": "#191f2f",
+                        "surface-container-highest": "#2e3545",
+                        "secondary-fixed-dim": "#b1c6f9",
+                        "secondary": "#b1c6f9",
+                        "primary-fixed-dim": "#adc6ff",
+                        "tertiary-container": "#df7412",
+                        "on-primary-fixed-variant": "#004395",
+                        "on-background": "#dce2f7",
+                        "on-secondary-container": "#9fb5e7",
+                        "on-tertiary-fixed-variant": "#723600",
+                        "on-secondary": "#182f59",
+                        "surface": "#0c1322",
+                        "surface-bright": "#323949",
+                        "on-error": "#690005",
+                        "background": "#0c1322",
+                        "primary-fixed": "#d8e2ff",
+                        "on-secondary-fixed": "#001a42",
+                        "surface-container-low": "#141b2b",
+                        "primary-container": "#4d8eff",
+                        "secondary-fixed": "#d8e2ff",
+                        "outline-variant": "#424754",
+                        "on-primary-container": "#00285d",
+                        "surface-tint": "#adc6ff",
+                        "on-tertiary-container": "#461f00",
+                        "on-error-container": "#ffdad6"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "display": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface h-screen w-screen overflow-hidden antialiased flex flex-col md:flex-row">
+<!-- SideNavBar (Web Only) -->
+<nav class="hidden md:flex flex-col h-full w-64 fixed left-0 border-r-0 bg-[#141b2b] py-8 transition-colors duration-200 z-10">
+<div class="px-6 mb-8">
+<h1 class="text-lg font-black text-[#adc6ff] tracking-tighter">PRECISION TECH</h1>
+<p class="font-['Inter'] text-sm tracking-wide text-[#on_surface_variant] mt-1 opacity-70">V1.0.4-KINETIC</p>
+</div>
+<div class="flex-1 overflow-y-auto">
+<ul class="space-y-2">
+<li>
+<a class="flex items-center px-6 py-3 bg-[#232a3a] text-[#adc6ff] rounded-r-full mr-4 group" href="#">
+<span class="material-symbols-outlined mr-3 text-xl" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-medium text-sm">Panel</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-6 py-3 text-[#on_surface_variant] hover:text-white hover:bg-[#191f2f] transition-all duration-300 rounded-r-full mr-4 group" href="#">
+<span class="material-symbols-outlined mr-3 text-xl">history</span>
+<span class="font-medium text-sm">Geçmiş</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-6 py-3 text-[#on_surface_variant] hover:text-white hover:bg-[#191f2f] transition-all duration-300 rounded-r-full mr-4 group" href="#">
+<span class="material-symbols-outlined mr-3 text-xl">query_stats</span>
+<span class="font-medium text-sm">Analiz</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-6 py-3 text-[#on_surface_variant] hover:text-white hover:bg-[#191f2f] transition-all duration-300 rounded-r-full mr-4 group" href="#">
+<span class="material-symbols-outlined mr-3 text-xl">settings</span>
+<span class="font-medium text-sm">Ayarlar</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 relative flex flex-col h-full">
+<!-- TopAppBar (Mobile & Web) -->
+<header class="flex justify-between items-center w-full px-6 py-4 bg-[#0c1322] md:bg-transparent z-10 docked full-width top-0">
+<div class="md:hidden">
+<span class="text-xl font-bold tracking-tighter text-[#adc6ff]">SAYAÇ</span>
+</div>
+<div class="flex-1 md:flex-none"></div>
+<div class="flex items-center space-x-4 text-[#adc6ff]">
+<button class="hover:bg-[#191f2f] p-2 rounded-full transition-all duration-300 active:scale-95">
+<span class="material-symbols-outlined">settings_input_antenna</span>
+</button>
+<button class="hover:bg-[#191f2f] p-2 rounded-full transition-all duration-300 active:scale-95">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+<button class="hover:bg-[#191f2f] p-2 rounded-full transition-all duration-300 active:scale-95">
+<span class="material-symbols-outlined">keyboard_command_key</span>
+</button>
+</div>
+</header>
+<!-- Simulated Background Content (Counter Screen) -->
+<div class="flex-1 flex items-center justify-center p-6 blur-[2px] opacity-50 transition-all duration-300">
+<div class="text-center relative">
+<!-- Ambient Glow -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary/10 blur-[40px] rounded-full z-0 pointer-events-none"></div>
+<div class="relative z-10 text-[3.5rem] font-bold font-mono text-on-surface mb-8">
+                    1,024
+                </div>
+<div class="flex justify-center space-x-4">
+<button class="bg-surface-container-highest text-on-surface p-4 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary-container p-4 px-8 rounded-xl font-medium tracking-[0.05em] uppercase text-[0.75rem] flex items-center">
+<span class="material-symbols-outlined mr-2 text-[1.25rem]">add</span>
+                        Arttır
+                    </button>
+</div>
+</div>
+</div>
+<!-- Modal Overlay -->
+<div class="absolute inset-0 z-50 flex items-center justify-center px-4 bg-surface-dim/60 backdrop-blur-sm">
+<!-- Modal Dialog Container -->
+<div class="bg-surface-container-highest rounded-[0.75rem] w-full max-w-md shadow-2xl relative outline outline-[1px] outline-outline-variant/20 overflow-hidden scale-100 transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]">
+<!-- Inner Glass Detail -->
+<div class="absolute inset-0 bg-primary/5 backdrop-blur-[24px] pointer-events-none rounded-[0.75rem]"></div>
+<div class="relative p-6 z-10">
+<!-- Icon / Header -->
+<div class="flex items-center justify-center w-12 h-12 rounded-full bg-error-container/20 text-error mb-4">
+<span class="material-symbols-outlined text-[1.5rem]" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<h2 class="text-[1.5rem] font-semibold text-on-surface mb-2 font-headline">Sıfırlama Onayı</h2>
+<p class="text-on-surface-variant text-sm mb-8 leading-relaxed">
+                        Sayaç değerini sıfırlamak istediğinize emin misiniz? Bu işlem geri alınamaz ve tüm mevcut veriler silinir.
+                    </p>
+<!-- Actions -->
+<div class="flex items-center justify-end space-x-3 mt-6">
+<button class="px-5 py-2.5 rounded-xl text-on-surface-variant font-medium tracking-[0.05em] uppercase text-[0.75rem] hover:bg-surface-container transition-colors duration-200 active:scale-95">
+                            İptal
+                        </button>
+<button class="px-5 py-2.5 rounded-xl bg-error text-on-error font-semibold tracking-[0.05em] uppercase text-[0.75rem] shadow-[0_0_15px_rgba(255,180,171,0.1)] hover:bg-[#ffc6c0] transition-all duration-200 active:scale-95 flex items-center">
+<span class="material-symbols-outlined mr-1.5 text-[1rem]">delete</span>
+                            Evet, Sıfırla
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>
