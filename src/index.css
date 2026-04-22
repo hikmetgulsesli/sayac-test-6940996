@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import '../stitch/design-tokens.css';
+
+:root {
+  --font-heading: 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: var(--font-body);
+}
+
+[data-theme='light'] {
+  --color-surface-dim: #dce2f7;
+  --color-surface: #e8ecf4;
+  --color-surface-container: #f0f4fa;
+  --color-surface-container-highest: #c2c6d6;
+  --color-on-surface: #293040;
+  --color-on-surface-variant: #424754;
+  --color-primary: #005ac2;
+  --color-outline: #8c909f;
+  --color-background: #dce2f7;
+}
